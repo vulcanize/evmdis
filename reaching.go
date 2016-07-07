@@ -76,6 +76,7 @@ func updateReachings(inst *Instruction, operands []InstructionPointer) {
 }
 
 func (self *reachingState) Advance() ([]EvmState, error) {
+	if(self.nextBlock == nil){return nil, nil;}
 	pc := self.nextBlock.Offset
 	stack := self.stack
 	for i := range self.nextBlock.Instructions {
